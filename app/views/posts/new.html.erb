@@ -1,0 +1,19 @@
+<h1>New Post</h1>
+<!-- creating a form= need a title & body-->
+<%= form_for :post, url: posts_path do |f| %>
+ <!-- wrapped in a p tag so each one has its own line -->
+  <p>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </p>
+
+  <p>
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+
+<% end %>
