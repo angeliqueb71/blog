@@ -15,23 +15,26 @@
         <%= link_to root_path do %>
          <%= image_tag "blog.png" %>
         <% end %>
-     </div>
-     <ul>
-       <li class="category">Website</li>
-       <li><%= link_to "Blogs", root_path %></li>
-       <li>About</li>
-     </ul>
+      </div>
+      <ul>
+         <li class="category">Website</li>
+         <!-- blogs resets back to index/home page -->
+         <li><%= link_to "Blogs", root_path %></li>
+         <li>About</li>
+       </ul>
+    </div>
 
      <p class="sign_in">Admin Login</p>
      <div id="main_content">
       <div id="header">
        <p>All Posts</p>
         <div class="buttons">
+          <!-- click on button to create a new post -->
          <button class="button"><%= link_to "New Post", new_post_path %></button>
          <button class="button">Log Out</button>
        </div>
      </div>
-      <!-- flash message for sign in or sign  -->
+      <!-- flash message for sign in or sign out -->
       <% flash.each do |name, msg| %>
        <% content_tag(:div, msg, class: "alert") %>
       <% end %>

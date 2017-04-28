@@ -4,10 +4,12 @@ Rails.application.routes.draw do
   resources :posts
   root "posts#index"
   get "/" => "post#new"
-
+  #
   get "/" => "post#create"
-
+  #
   get "/" => "post#show"
+  get "/" => "post#destroy"
+  get "/" => "post#edit"
 
 
 

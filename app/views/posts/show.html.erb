@@ -1,15 +1,17 @@
 <!-- this is where the actual posts live -->
 <!-- want to show the title and  body -->
-<div id="post_content"
+<div id="post_content">
   <h1 class="title">
     <%= @post.title %>
   </h1>
 
   <p class="date">
-    Submitted <% time_ago_in_words(@post.created_at) %>
+    Submitted <%= time_ago_in_words(@post.created_at) %>
+    <button id="button"><%= link_to 'Edit', edit_post_path(@post) %></button>
+    <button id="button"><%= link_to 'Delete', posts_path(@post), method: :delete, data: { confirm: 'Are you sure?'} %></button>
   </p>
 
   <p class="body">
     <%= @post.body %>
   </p>
-</div>  
+</div>
