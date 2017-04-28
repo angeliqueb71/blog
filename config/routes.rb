@@ -1,16 +1,14 @@
 Rails.application.routes.draw do
+  get 'comments/_comments'
+
+  get 'comments/_form'
+
   # get 'posts/index'
   # get "/" => "post#index"
   resources :posts
+  resources :comments
   root "posts#index"
-  get "/" => "post#new"
-  #
-  get "/" => "post#create"
-  #
-  get "/" => "post#show"
-  get "/" => "post#destroy"
-  get "/" => "post#edit"
-
+  
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

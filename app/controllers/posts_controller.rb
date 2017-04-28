@@ -47,6 +47,7 @@ class PostsController < ApplicationController
 
     redirect_to root_path
   end
+  
 
   # rails security feature- must define what params you want to allow
   private

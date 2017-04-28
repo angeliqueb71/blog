@@ -1,0 +1,11 @@
+class CommentsController < ApplicationController
+  def create
+    @post = Post.find(params[:post_id])
+    @comment = @post.comment.create(params[:comment].permit(:name, :body))
+    redirect_to post_path(@post)
+  end
+
+
+  def _form
+  end
+end
