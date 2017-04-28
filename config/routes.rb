@@ -3,11 +3,11 @@ Rails.application.routes.draw do
   # get "/" => "post#index"
   resources :posts
   root "posts#index"
-  # get "/" => "post#new"
-  #
-  # get "/" => "post#create"
-  #
-  # get "/" => "post#show"
+  get "/" => "post#new"
+
+  get "/" => "post#create"
+
+  get "/" => "post#show"
 
 
 
