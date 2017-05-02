@@ -1,0 +1,18 @@
+<!-- <h1>Users#edit</h1>
+<p>Find me in app/views/users/edit.html.erb</p> -->
+
+<div id="page_wrapper"
+  <h1>Edit User</h1>
+
+  <!-- creating a form= need a title & body-->
+   <!-- wrapped in a p tag so each one has its own line -->
+   <%= form_for :user, url: users_path do |user| %>
+
+   <p>
+        <%= link_to(user.posts.count.to_s + " Post".pluralize(user.posts.count), user_path(user.id)) %>
+         <% if current_user && current_user.id == user.id %>
+         | <%= link_to("EDIT", edit_user_path(user.id)) %>
+         | <%= link_to("DELETE", user_path(user.id), method: :delete, data: {confirm: 'Are you sure?'}) %>
+       <% end %>
+     </p>
+   <% end %>

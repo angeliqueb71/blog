@@ -1,0 +1,12 @@
+<!-- <h1>Users#show</h1>
+<p>Find me in app/views/users/show.html.erb</p> -->
+<!-- this view corresponds to the UsersController, show action -->
+
+    <%= form_for @users do |f| %>
+    <!-- wrapped in a p tag so each one has its own line -->
+
+     
+     <p><%= f.email_field :email, placeholder: "EMAIL", class: "field", required: true  %></p>
+     <p><%= f.password_field :password, placeholder: "PASSWORD", class: "field", required: true %></p>
+     <p><%= f.submit value: "SUBMIT", class: "button" %></p>
+   <% end %>

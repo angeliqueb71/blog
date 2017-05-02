@@ -10,37 +10,42 @@
   </head>
 
   <body>
-    <div class="sidebar">
-      <div class="logo">
-        <%= link_to root_path do %>
-         <%= image_tag "blog.png" %>
-        <% end %>
+    <body>
+      <div class="sidebar">
+        <div class="logo">
+          <%= link_to root_path do %>
+           <%= image_tag "blog.png" %>
+          <% end %>
+        </div>
+        <ul>
+           <!-- blogs resets back to index/home page -->
+           <li><%= link_to "Blogs", root_path %></li>
+            <% if login_path %>
+                <p><%= link_to "Login In", users_path %></p>
+                <p><%= link_to "Sign Up", new_user_path(session[:user_id]), :class => "signup" %></p>
+              <% else %>
+              <%= link_to "New Post", new_post_path %>
+
+
+
+            <% end %>
+         </ul>
       </div>
-      <ul>
-         <li class="category">Website</li>
-         <!-- blogs resets back to index/home page -->
-         <li><%= link_to "Blogs", root_path %></li>
-         <li>About</li>
-       </ul>
-    </div>
 
-     <p class="sign_in">Admin Login</p>
-     <div id="main_content">
-      <div id="header">
-       <p>All Posts</p>
-        <div class="buttons">
-          <!-- click on button to create a new post -->
-         <button class="button"><%= link_to "New Post", new_post_path %></button>
-         <button class="button">Log Out</button>
+       <div id="main_content">
+        <div id="header">
+         <p>All Posts</p>
+          <div class="buttons">
+            <!-- <!- click on button to create a new post -->
+           <button class="button"><%= link_to "New Post", new_post_path %></button>
+           <button class="button"><%= link_to "Log Out", root_path %></button>
+         </div>
        </div>
-     </div>
-      <!-- flash message for sign in or sign out -->
-      <% flash.each do |name, msg| %>
-       <% content_tag(:div, msg, class: "alert") %>
-      <% end %>
-     <%= yield %>
-    </div>
-
-
+        <!-- flash message for sign in or sign out -->
+        <% flash.each do |name, msg, comments| %>
+         <% content_tag(:div, msg, class: "alert") %>
+        <% end %>
+       <%= yield %>
+      </div>
   </body>
 </html>

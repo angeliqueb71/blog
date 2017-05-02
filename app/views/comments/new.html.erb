@@ -1,0 +1,39 @@
+<!-- <h1>Users#new</h1>
+<p>Find me in app/views/users/new.html.erb</p> -->
+
+<%= form_for([@post, @post.comments.build]) do |f| %>
+<p>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+</p>
+
+<p>
+  <%= f.label :body %>
+  <%= f.text_area :body %>
+</p>
+
+<p>
+  <%= f.submit %>
+</p>
+<% end %>
+
+<%= link_to 'Back', posts_path %>
+    Submitted <%= time_ago_in_words(@post.created_at) %>
+
+    <p><%= link_to 'Delete', [@post, @post.comments.build],
+  								  method: :delete,
+  								  class: "button",
+  								 	data: { confirm: 'Are you sure?' } %></p>
+
+
+
+
+
+
+
+
+<!--
+  post "/users" do
+    User.create(fname: params[:fname], lname: params[:lname])
+    redirect "/"
+  end

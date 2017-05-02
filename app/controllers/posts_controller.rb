@@ -1,29 +1,29 @@
 class PostsController < ApplicationController
+
+  # use the authentication system
+
+    # http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
+
   def index
     # this will reverse the order of the post: most recent on top
     @posts = Post.all.order('created_at DESC')
   end
-  # create a new action
+
   def new
-    # @post = Post.new
+    @post = Post.new
   end
 
-  # to save the post; define & create a method
   def create
-    # create a new post & save
-    @post = Post.new(post_params)
-    @post.save
+    @post = Post.create(post_params)
 
-    # if @post.save
-    #  redirect_to @post
-    # else
-    #   # render post/new will keep the message from losing if wasnt saved correctly
-    #   redirect_to @post
-    # end
-   end
+    if @post.save
+      redirect_to @post
+    else
+      render 'new'
+    end
+  end
 
   def show
-    # going to find the post by id ex post 1
     @post = Post.find(params[:id])
   end
 
@@ -34,24 +34,22 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
 
-    if @post.update(params[:post].permit(:title, :body))
+    if @post.update(post_params)
       redirect_to @post
     else
-      redirect_to root_path
+      render 'edit'
     end
   end
 
   def destroy
-    @post = Post.find(params[:id])
-    @post.destroy
+    Post.find(params[:id]).destroy
 
     redirect_to root_path
   end
-  
 
-  # rails security feature- must define what params you want to allow
   private
-    def post_params
-      params.require(:post).permit(:title, :body)
-    end
+
+  def post_params
+    params.require(:post).permit(:title, :body, :user_id)
+  end
 end

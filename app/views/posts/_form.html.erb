@@ -1,6 +1,24 @@
 <!-- creating a form= need a title & body-->
+<!-- creating a form= need a title & body-->
+<!-- display errors, we can use the following code in our view -->
+
+
 <%= form_for @post do |f| %>
  <!-- wrapped in a p tag so each one has its own line -->
+<% if @post.errors.any? %>
+     <div id="error_explanation">
+       <h2>
+         <%= pluralize(@post.errors.count, "error") %> prohibited
+         this Post from being saved:
+       </h2>
+       <ul>
+         <% @post.errors.full_messages.each do |msg| %>
+           <li><%= msg %></li>
+         <% end %>
+       </ul>
+     </div>
+   <% end %>
+
   <p>
     <%= f.label :title %>
     <%= f.text_field :title %>

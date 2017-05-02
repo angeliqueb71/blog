@@ -1,0 +1,15 @@
+<!-- <h1>Sessions#new</h1>
+<p>Find me in app/views/sessions/new.html.erb</p> -->
+<h1 id="sessLogin">Blogger</h1>
+<div id="sessLoginForm">
+ <%= form_for(:session, url: '/login' ) do |form| %>
+    <%= form.text_field :email,  :placeholder => "User ID", :id => "sessusername"%>
+    <%= form.password_field :password,  :placeholder => "Confirm Password", :id => "sesspassword" %>
+    <%= form.submit "You are login", :id =>"sessSubmit" %>
+ <% end %>
+</div>
+
+<p id="notmember">
+  Not a member?
+  <a href="/users/new">SignUp here!</a>
+</p>

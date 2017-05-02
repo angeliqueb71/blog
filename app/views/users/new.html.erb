@@ -1,0 +1,27 @@
+<!-- <h1>Users#new</h1>
+<p>Find me in app/views/users/new.html.erb</p> -->
+<!-- new.html.erb -->
+
+<%= form_for :user, url: users_path do |f| %>
+
+<p><%= f.text_field :fname, placeholder: "First Name", class: "field", required: true %></p>
+<p><%= f.text_field :lname, placeholder: "Last Name", class: "field", required: true %></p>
+<p><%= f.email_field :email, placeholder: "EMAIL", class: "field", required: true  %></p>
+<p><%= f.password_field :password, placeholder: "PASSWORD", class: "field", required: true %></p>
+<p><%= f.submit value: "SUBMIT", class: "button" %>
+ <% link_to new_post_path %></p>
+<% end %>
+
+
+
+
+
+
+
+
+
+<!--
+  post "/users" do
+    User.create(fname: params[:fname], lname: params[:lname])
+    redirect "/"
+  end
